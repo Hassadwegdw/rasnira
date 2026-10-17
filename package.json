@@ -1,0 +1,10 @@
+{
+  "name": "rasnira",
+  "version": "0.2.0",
+  "private": true,
+  "type": "module",
+  "description": "Arabic local-first static code review PWA",
+  "scripts": {
+    "test": "node scanner.test.mjs"
+  }
+}
