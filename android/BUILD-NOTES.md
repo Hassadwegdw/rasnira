@@ -17,7 +17,7 @@ cd android
 ANDROID_PLATFORM=/path/to/android-platform-directory \
 R8_JAR=/path/to/r8.jar \
 BUILD_TOOLS=/path/to/android-build-tools \
-./build.sh
+bash build.sh
 ```
 
 `ANDROID_PLATFORM` مجلد يحتوي `android.jar`. الافتراضي الحالي `/tmp/platform28/android-9`، وD8 في `/tmp/d8.jar`، وbuild-tools في `/usr/lib/android-sdk/build-tools/debian`. استخدم SDK موثوقًا؛ أدوات البناء ليست ضمن ملف ZIP. يجمع السكربت جميع مصادر Java، ويحولها إلى DEX ويضبط المحاذاة ويوقّع ويتحقق من APK.
