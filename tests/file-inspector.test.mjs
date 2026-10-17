@@ -1,0 +1,11 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {webcrypto} from 'node:crypto';
+import {inspectBytes} from '../public/file-inspector.js';
+if(!globalThis.crypto)globalThis.crypto=webcrypto;
+test('بصمة SHA-256 معروفة',async()=>{const result=await inspectBytes('a.txt',new TextEncoder().encode('abc'));assert.equal(result.sha256,'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad');assert.equal(result.findings.length,0);assert.equal(result.binary,false)});
+test('تمييز علامة الاختبار دون الادعاء بفيروس',async()=>{const text='X5O!P%@AP[4\\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*';const result=await inspectBytes('eicar.txt',new TextEncoder().encode(text));assert.equal(result.findings.length,1);assert.match(result.findings[0].title,/ليست فيروسًا/);assert.equal(result.findings[0].severity,'info')});
+test('الملف الثنائي له بصمة ولا يُدّعى تحليله كبرمجيات',async()=>{const result=await inspectBytes('file.bin',new Uint8Array([0,0,255,1]));assert.equal(result.binary,true);assert.equal(result.findings.length,0);assert.equal(result.sha256.length,64)});
+test('الملف الفارغ',async()=>{const result=await inspectBytes('empty',new Uint8Array());assert.equal(result.size,0);assert.equal(result.binary,false)});
+test('ANSI ESC لا يجعل النص ثنائيًا',async()=>{const r=await inspectBytes('log.js',new TextEncoder().encode('\x1b[31meval(userInput)\x1b[0m'));assert.equal(r.binary,false)});
+test('فك ترميز UTF-16LE مع BOM قبل الحكم',async()=>{const text='eval(userInput);';const bytes=new Uint8Array(2+text.length*2);bytes.set([255,254]);for(let i=0;i<text.length;i++)bytes[2+i*2]=text.charCodeAt(i);const r=await inspectBytes('app.js',bytes);assert.equal(r.binary,false);assert.equal(r.encoding,'utf-16le')});

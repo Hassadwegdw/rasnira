@@ -8,3 +8,11 @@ node_modules/
 *claim*
 .DS_Store
 dist/
+
+android/.private/
+android/build/
+__pycache__/
+
+*.jks
+*.keystore
+.private/
