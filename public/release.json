@@ -1,0 +1,8 @@
+{
+  "version": "0.3.0-beta",
+  "apk": "https://github.com/Hassadwegdw/rasnira/releases/download/v0.3.0-beta/rasnira-0.3.0-beta.apk",
+  "apk_sha256": "39c397f10818e60f030ebb0dd2554414126cdd12296047292ea7326f7c7270be",
+  "repository": "https://github.com/Hassadwegdw/rasnira",
+  "site_review_backend": "local-only",
+  "android_device_tested": false
+}

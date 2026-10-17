@@ -1,0 +1,24 @@
+{
+  "name": "رصنيرا — Rasnira",
+  "short_name": "رصنيرا",
+  "description": "مراجعة أمنية ساكنة محلية لملفات مشروعك دون رفعها.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "any",
+  "theme_color": "#0b1715",
+  "background_color": "#0b1715",
+  "icons": [
+    {"src":"./icon-192.png","type":"image/png","sizes":"192x192","purpose":"any"},
+    {"src":"./icon-512.png","type":"image/png","sizes":"512x512","purpose":"any"},
+    {"src":"./icon-maskable-512.png","type":"image/png","sizes":"512x512","purpose":"maskable"}
+  ],
+  "shortcuts": [
+    {"name":"فحص الملفات","short_name":"فحص الملفات","url":"./#scan-heading","icons":[{"src":"./icon-192.png","sizes":"192x192","type":"image/png"}]},
+    {"name":"فحص موقع","short_name":"فحص موقع","url":"./#websiteSection","icons":[{"src":"./icon-192.png","sizes":"192x192","type":"image/png"}]}
+  ],
+  "id": "./"
+}
